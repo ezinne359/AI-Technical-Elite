@@ -27,6 +27,7 @@ from sklearn import metrics
 # export relevant_data as csv
 import pandas as pd
 name_genre_identifiers = pd.read_csv('name_genre_identifiers_final.csv')
+name_genre_indentifiers = name_genre_identifiers[name_genre_identifiers['top genre'].notnull()][:100000]
 
 names = name_genre_identifiers['primaryName']
 top_genre = name_genre_identifiers['top genre']
@@ -34,11 +35,13 @@ top_genre = name_genre_identifiers['top genre']
 data = [['Regan'], ['Nazil'], ['Bill'], ['Nicole']] 
 X_test = pd.DataFrame(data, columns = ['names', ]) 
 
+X_train,X_test, y_train,y_test = train_test_split(names,top_genre,test_size = 0.2, random_state = 0)
+
 from finetune.base_models import BERT, BERTLarge, GPT2, GPT2Medium, GPT2Large, TextCNN, TCN, RoBERTa, DistilBERT
 from finetune import Classifier
 
 model = Classifier(base_model = TCN)
-model.fit(names, top_genre)
+model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 print(y_pred)
