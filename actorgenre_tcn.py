@@ -27,7 +27,7 @@ from sklearn import metrics
 # export relevant_data as csv
 import pandas as pd
 name_genre_identifiers = pd.read_csv('name_genre_identifiers_final.csv', encoding='latin-1')
-name_genre_indentifiers = name_genre_identifiers[name_genre_identifiers['top genre'].notnull()][:100000]
+name_genre_identifiers = name_genre_identifiers[name_genre_identifiers['top genre'].notnull()][:100000]
 
 names = name_genre_identifiers['primaryName']
 top_genre = name_genre_identifiers['top genre']
