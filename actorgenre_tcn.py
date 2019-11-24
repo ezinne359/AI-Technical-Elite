@@ -32,10 +32,7 @@ name_genre_indentifiers = name_genre_identifiers[name_genre_identifiers['top gen
 names = name_genre_identifiers['primaryName']
 top_genre = name_genre_identifiers['top genre']
 
-data = [['Regan'], ['Nazil'], ['Bill'], ['Nicole']] 
-X_test = pd.DataFrame(data, columns = ['names', ]) 
-
-X_train,X_test, y_train,y_test = train_test_split(names,top_genre,test_size = 0.2, random_state = 0)
+X_train, X_test, y_train, y_test = train_test_split(names,top_genre,test_size = 0.2, random_state = 0)
 
 from finetune.base_models import BERT, BERTLarge, GPT2, GPT2Medium, GPT2Large, TextCNN, TCN, RoBERTa, DistilBERT
 from finetune import Classifier
